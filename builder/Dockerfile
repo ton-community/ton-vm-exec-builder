@@ -31,17 +31,8 @@ RUN /bin/bash ../em-openssl.sh
 
 WORKDIR /build
 
-RUN git clone --depth=1 --branch=vm-exec https://github.com/ton-community/ton-blockchain ton
-WORKDIR /build/ton
-RUN git submodule update --init --depth=1
-
-WORKDIR /build
-
 COPY builder/em-ton.sh .
 
 WORKDIR /build/ton/build
-RUN /bin/bash ../../em-ton.sh
 
-COPY builder/cp-output.sh .
-
-ENTRYPOINT [ "/bin/bash", "./cp-output.sh" ]
+ENTRYPOINT [ "/bin/bash", "/build/em-ton.sh" ]

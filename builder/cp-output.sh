@@ -1,1 +1,0 @@
-cp crypto/vm-exec.wasm crypto/vm-exec.js /output
